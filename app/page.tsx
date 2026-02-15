@@ -7,11 +7,12 @@ import { HeavenSection } from "./components/sections/heaven-section"
 import { HellSection } from "./components/sections/hell-section"
 import { ProofSection } from "./components/sections/proof-section"
 import { ConsultationCtaSection } from "./components/sections/consultation-cta-section"
+import { seminar } from "./content/seminar"
 
 export default function HomePage() {
   return (
     <main className="min-h-screen bg-white text-neutral-900">
-      <HeroSection />
+      <HeroSection seminar={seminar} />
       <PhilosophySection />
       <ProblemSection />
       <CommonSolutionSection />
@@ -19,7 +20,7 @@ export default function HomePage() {
       <HeavenSection />
       <HellSection />
       <ProofSection />
-      <ConsultationCtaSection />
+      <ConsultationCtaSection seminar={seminar} />
     </main>
   )
 }

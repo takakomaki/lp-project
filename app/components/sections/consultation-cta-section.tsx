@@ -1,6 +1,10 @@
-import { seminar } from "../../content/seminar"
+import type { SeminarInfo } from "../../content/seminar"
 
-export function ConsultationCtaSection() {
+type ConsultationCtaSectionProps = {
+  seminar: SeminarInfo
+}
+
+export function ConsultationCtaSection({ seminar }: ConsultationCtaSectionProps) {
   const isApplicationOpen = Boolean(seminar.applicationUrl)
 
   return (

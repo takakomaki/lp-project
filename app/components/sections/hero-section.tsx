@@ -1,6 +1,10 @@
-import { seminar } from "../../content/seminar"
+import type { SeminarInfo } from "../../content/seminar"
 
-export function HeroSection() {
+type HeroSectionProps = {
+  seminar: SeminarInfo
+}
+
+export function HeroSection({ seminar }: HeroSectionProps) {
   const isApplicationOpen = Boolean(seminar.applicationUrl)
   const primaryCtaLabel = isApplicationOpen ? "今すぐ申込" : "受付準備中"
 
