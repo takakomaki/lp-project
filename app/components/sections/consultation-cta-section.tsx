@@ -1,10 +1,12 @@
 import type { SeminarInfo } from "../../content/seminar"
+import { lpCopyVol01 } from "../../content/lp-copy-vol-01"
 
 type ConsultationCtaSectionProps = {
   seminar: SeminarInfo
 }
 
 export function ConsultationCtaSection({ seminar }: ConsultationCtaSectionProps) {
+  const copy = lpCopyVol01.cta
   const isApplicationOpen = Boolean(seminar.applicationUrl)
 
   return (
@@ -14,11 +16,10 @@ export function ConsultationCtaSection({ seminar }: ConsultationCtaSectionProps)
           <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
             <div className="max-w-xl">
               <h2 className="text-2xl font-semibold tracking-tight">
-                まず、あなたの状態を一緒に整理しませんか
+                {copy.heading}
               </h2>
               <p className="mt-4 text-neutral-700 leading-relaxed">
-                数値や薬の不安を「一度、言語化」してから。血管・血流という軸で、
-                これからの選択肢を増やすためのセミナーです。
+                {copy.lead}
               </p>
 
               <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
@@ -27,7 +28,7 @@ export function ConsultationCtaSection({ seminar }: ConsultationCtaSectionProps)
                     href={seminar.applicationUrl!}
                     className="inline-flex h-11 items-center justify-center rounded-full bg-neutral-900 px-7 text-[13px] font-semibold text-white transition-colors hover:bg-neutral-800"
                   >
-                    セミナーに申し込む
+                    {copy.primaryLabel}
                   </a>
                 ) : (
                   <button
@@ -37,7 +38,7 @@ export function ConsultationCtaSection({ seminar }: ConsultationCtaSectionProps)
                     aria-disabled="true"
                     title="申込URLが未確定のため準備中です"
                   >
-                    申込受付は準備中です
+                    {copy.standbyLabel}
                   </button>
                 )}
 
@@ -46,7 +47,7 @@ export function ConsultationCtaSection({ seminar }: ConsultationCtaSectionProps)
                     href={seminar.lineUrl}
                     className="inline-flex h-11 items-center justify-center rounded-full border border-neutral-300 bg-white px-7 text-[13px] font-semibold text-neutral-900 transition-colors hover:bg-neutral-50"
                   >
-                    公式LINEで受け取る
+                    {copy.secondaryLabel ?? "公式LINEで受け取る"}
                   </a>
                 ) : null}
               </div>

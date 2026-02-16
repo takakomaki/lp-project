@@ -1,12 +1,16 @@
 import type { SeminarInfo } from "../../content/seminar"
+import { lpCopyVol01 } from "../../content/lp-copy-vol-01"
 
 type HeroSectionProps = {
   seminar: SeminarInfo
 }
 
 export function HeroSection({ seminar }: HeroSectionProps) {
+  const copy = lpCopyVol01.hero
   const isApplicationOpen = Boolean(seminar.applicationUrl)
-  const primaryCtaLabel = isApplicationOpen ? "今すぐ申込" : "受付準備中"
+  const primaryCtaLabel = isApplicationOpen
+    ? copy.ctas.primaryLabel
+    : copy.ctas.standbyLabel
 
   return (
     <section
@@ -260,7 +264,7 @@ export function HeroSection({ seminar }: HeroSectionProps) {
                   fontSize: "clamp(28px, 3.2vw, 52px)",
                 }}
               >
-                血管は、あなたの未来の地図。
+                {copy.headline}
               </h1>
               <p
                 className="mt-8 text-[#F2F2F2]/75 font-extralight leading-[2] tracking-[0.3em]"
@@ -271,7 +275,7 @@ export function HeroSection({ seminar }: HeroSectionProps) {
                   fontSize: "clamp(15px, 1.35vw, 18px)",
                 }}
               >
-                薬に頼り続ける人生に、静かな違和感を覚えているあなたへ。
+                {copy.subhead}
               </p>
 
               <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
@@ -314,7 +318,7 @@ export function HeroSection({ seminar }: HeroSectionProps) {
                       fontWeight: 200,
                     }}
                   >
-                    まずはLINEで受け取る
+                    {copy.ctas.secondaryLabel ?? "まずはLINEで受け取る"}
                   </a>
                 ) : null}
               </div>
